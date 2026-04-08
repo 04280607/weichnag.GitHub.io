@@ -1,3 +1,5 @@
+import crypto from 'crypto'
+
 export default async function handler(req, res) {
   const { text, target } = req.body
 
@@ -5,7 +7,6 @@ export default async function handler(req, res) {
   const key = "p8vVSXAxIgBIZFxemo6D"
   const salt = Date.now()
 
-  const crypto = await import('crypto')
   const sign = crypto
     .createHash('md5')
     .update(appid + text + salt + key)
